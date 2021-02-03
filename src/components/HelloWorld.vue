@@ -4,6 +4,7 @@
     <div>
       {{ loading ? 'loading...' : data }}
       <button @click="startRequest">request</button>
+      <button @click="stopRequest">stop Request</button>
     </div>
   </div>
 </template>
@@ -19,16 +20,22 @@ export default defineComponent({
     msg: String,
   },
   setup() {
-    const { data, loading, run } = useRequest(() => getUser('andy'), {
+    const { data, loading, run, cancel } = useRequest(() => getUser('andy'), {
       manaul: true,
       onSuccess(data) {
         console.log('onSuccess', data);
       },
+      pollingInterval: true,
+      pollingWhenHidden: true,
     });
     const startRequest = () => {
       run();
     };
+    const stopRequest = () => {
+      cancel();
+    };
     return {
+      stopRequest,
       startRequest,
       data,
       loading,
