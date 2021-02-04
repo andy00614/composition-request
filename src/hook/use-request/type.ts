@@ -3,10 +3,11 @@ export interface Options {
   onSuccess?: (result: any, params?: any) => void;
   pollingInterval?: boolean;
   pollingWhenHidden?: boolean;
+  debounceInterval?: number;
 }
 
 export interface PollingRequest {
   // ? 这里是否需要拿到结果呢
-  run: () => Promise<any>;
+  run: (...params: any) => Promise<any>;
   cancel: () => void;
 }

@@ -1,6 +1,8 @@
 import { ref } from 'vue';
 import { Options, PollingRequest } from './type';
 import { isOnCurPage } from './utils';
+import throttle from 'lodash.throttle';
+import debounce from 'lodash.debounce';
 // ToDO: any -> generic
 export function useRequest<T>(requestFn: () => Promise<T>, options?: Options) {
   const requestData = ref();
@@ -50,6 +52,16 @@ export function useRequest<T>(requestFn: () => Promise<T>, options?: Options) {
     return data;
   }
 
+  function runFactory() {
+    if (options.debounceInterval) {
+      return debounce(run, options.debounceInterval);
+    }
+    if (options.throttleInterval) {
+      return throttle(run, options.throttleInterval);
+    }
+    return run;
+  }
+
   if (!options?.manaul) {
     startRequest();
   }
@@ -57,7 +69,7 @@ export function useRequest<T>(requestFn: () => Promise<T>, options?: Options) {
   return {
     data: requestData,
     loading,
-    run,
+    run: runFactory(),
     cancel: requestInPolling.cancel,
   };
 }

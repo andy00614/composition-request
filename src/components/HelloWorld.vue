@@ -5,6 +5,7 @@
       {{ loading ? 'loading...' : data }}
       <button @click="startRequest">request</button>
       <button @click="stopRequest">stop Request</button>
+      <input type="text" @input="inputChange" />
     </div>
   </div>
 </template>
@@ -25,8 +26,9 @@ export default defineComponent({
       onSuccess(data) {
         console.log('onSuccess', data);
       },
-      pollingInterval: true,
+      // pollingInterval: true,
       pollingWhenHidden: true,
+      debounceInterval: 500,
     });
     const startRequest = () => {
       run();
@@ -34,7 +36,11 @@ export default defineComponent({
     const stopRequest = () => {
       cancel();
     };
+    const inputChange = () => {
+      run();
+    };
     return {
+      inputChange,
       stopRequest,
       startRequest,
       data,
