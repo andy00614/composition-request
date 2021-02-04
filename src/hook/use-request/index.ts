@@ -1,5 +1,5 @@
 // import { ref } from "@vue/composition-api";
-import { ref } from 'vue';
+import { ref } from '@vue/composition-api';
 import { Options, PollingRequest } from './type';
 import { isOnCurPage } from './utils';
 import throttle from 'lodash.throttle';

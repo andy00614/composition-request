@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "outDir": "dist",
+    "target": "es5",
     "module": "esnext",
     "strict": false,
     "jsx": "preserve",
@@ -28,11 +29,8 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "src/hook/**/*.ts",
+    "src/hook/**/*.js",
   ],
   "exclude": [
     "node_modules"
