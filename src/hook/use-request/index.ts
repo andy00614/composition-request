@@ -1,8 +1,11 @@
+// import { ref } from "@vue/composition-api";
 import { ref } from 'vue';
 import { Options, PollingRequest } from './type';
 import { isOnCurPage } from './utils';
 import throttle from 'lodash.throttle';
 import debounce from 'lodash.debounce';
+import '../../dep';
+
 // ToDO: any -> generic
 export function useRequest<T>(requestFn: () => Promise<T>, options?: Options) {
   const requestData = ref();

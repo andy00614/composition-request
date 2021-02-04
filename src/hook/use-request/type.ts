@@ -4,6 +4,7 @@ export interface Options {
   pollingInterval?: boolean;
   pollingWhenHidden?: boolean;
   debounceInterval?: number;
+  throttleInterval?: number;
 }
 
 export interface PollingRequest {
