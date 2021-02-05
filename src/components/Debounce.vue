@@ -13,7 +13,6 @@ import Mock from "mockjs";
 import { useRequest } from "@/hook";
 
 async function getEmail(search: string): Promise<string[]> {
-  console.log(search);
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(Mock.mock({ "data|5": ["@email"] }).data);

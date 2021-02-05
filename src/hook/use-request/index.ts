@@ -49,7 +49,7 @@ export default function useRequest<T extends unknown[], R>(
 
   async function run(...params: T): Promise<R> {
     if (options?.pollingInterval) {
-      return requestInPolling.run(params);
+      return requestInPolling.run(...params);
     }
     const data = await startRequest(...params);
     options && options.onSuccess && options.onSuccess(data, null);
@@ -68,7 +68,7 @@ export default function useRequest<T extends unknown[], R>(
 
   if (!options?.manaul) {
     // @ts-ignore
-    startRequest();
+    run();
   }
 
   return {
