@@ -1,4 +1,3 @@
-// import { ref } from "@vue/composition-api";
 import { ref } from 'vue';
 import { Options, PollingRequest } from './type';
 import { isOnCurPage } from './utils';
