@@ -23,7 +23,7 @@ async function getEmail(search: string): Promise<string[]> {
 export default defineComponent({
   setup() {
     const { data, loading } = useRequest(getEmail, {
-      pollingWhenHidden: true,
+      pollingWhenHidden: false,
       pollingInterval: 1000
     });
     return {

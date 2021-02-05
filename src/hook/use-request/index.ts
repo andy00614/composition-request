@@ -5,12 +5,11 @@ import throttle from "lodash.throttle";
 import debounce from "lodash.debounce";
 import "../../dep";
 
-// ToDO: any -> generic
-export default function useRequest<T extends unknown[], R>(
-  requestFn: (...params: T) => R,
+export default function useRequest<T extends unknown[], U>(
+  requestFn: (...params: T) => U,
   options?: Options
 ) {
-  const requestData = ref<R>();
+  const requestData = ref<U>();
   const loading = ref(false);
   async function startRequest(...params: T) {
     loading.value = true;
@@ -47,7 +46,7 @@ export default function useRequest<T extends unknown[], R>(
   }
   const requestInPolling = RequestInPolling(options?.pollingInterval || 1000);
 
-  async function run(...params: T): Promise<R> {
+  async function run(...params: T): Promise<U> {
     if (options?.pollingInterval) {
       return requestInPolling.run(...params);
     }
