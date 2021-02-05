@@ -8,7 +8,7 @@ import "../../dep";
 export default function useRequest<T extends unknown[], U>(
   requestFn: (...params: T) => U,
   options?: Options
-) {
+): Partial<PollingRequest> {
   const requestData = ref<U>();
   const loading = ref(false);
   async function startRequest(...params: T) {
@@ -19,7 +19,7 @@ export default function useRequest<T extends unknown[], U>(
     return res;
   }
 
-  function RequestInPolling(time = 1000): PollingRequest {
+  function RequestInPolling(time = 1000) {
     let timer = null as any;
     const run = async (...params: T) => {
       const data = await startRequest(...params);

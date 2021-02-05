@@ -1,29 +1,31 @@
 # composition-request
-
-## Project setup
+### What
+composition-api request function;
+*support*: interval request、auto debounce、manual fetch、stop fetching When hidden broswer tab、 and so on... 
+### How
 ```
-npm install
+import { useRequest } from 'compositon-request'
+...
+    setup() {
+        const { data, loading, run } = useRequest(serviceFn:Promise<any>,options);
+    }
+...
 ```
-
-### Compiles and hot-reloads for development
 ```
-npm run serve
+Options {
+  manaul?: boolean;
+  onSuccess?: (result: any, params?: any) => void;
+  pollingInterval?: number;
+  pollingWhenHidden?: boolean;
+  debounceInterval?: number;
+  throttleInterval?: number;
+}
 ```
-
-### Compiles and minifies for production
 ```
-npm run build
+export interface PollingRequest {
+  data: Ref<any>;
+  run: () => void;
+  cancel: () => void;
+  loading: Ref<boolean>;
+}
 ```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

@@ -1,3 +1,5 @@
+import { Ref } from "vue";
+
 export interface Options {
   manaul?: boolean;
   onSuccess?: (result: any, params?: any) => void;
@@ -8,7 +10,8 @@ export interface Options {
 }
 
 export interface PollingRequest {
-  // ? 这里是否需要拿到结果呢
-  run: (...params: any) => Promise<any>;
+  data: Ref<any>;
+  run: () => void;
   cancel: () => void;
+  loading: Ref<boolean>;
 }
