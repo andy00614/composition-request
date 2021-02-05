@@ -1,7 +1,7 @@
 export interface Options {
   manaul?: boolean;
   onSuccess?: (result: any, params?: any) => void;
-  pollingInterval?: boolean;
+  pollingInterval?: number;
   pollingWhenHidden?: boolean;
   debounceInterval?: number;
   throttleInterval?: number;

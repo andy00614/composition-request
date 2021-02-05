@@ -22,14 +22,14 @@ export default function useRequest<T extends unknown[], R>(
   }
 
   function RequestInPolling(time = 1000): PollingRequest {
-    let timer = null;
+    let timer = null as any;
     const run = async (...params: T) => {
       const data = await startRequest(...params);
-      options?.onSuccess(data, null);
+      options?.onSuccess && options.onSuccess(data, null);
       timer = setInterval(async () => {
-        if (!options.pollingWhenHidden || isOnCurPage()) {
+        if (!options?.pollingWhenHidden || isOnCurPage()) {
           const data = await startRequest(...params);
-          options.onSuccess(data, null);
+          options?.onSuccess && options.onSuccess(data, null);
         }
       }, time);
       return data;
@@ -46,7 +46,7 @@ export default function useRequest<T extends unknown[], R>(
       cancel,
     };
   }
-  const requestInPolling = RequestInPolling();
+  const requestInPolling = RequestInPolling(options?.pollingInterval || 1000);
 
   async function run(...params: T): Promise<R> {
     if (options?.pollingInterval) {

@@ -23,8 +23,12 @@ async function getEmail(search: string): Promise<string[]> {
 
 export default defineComponent({
   setup() {
-    const { data, loading, run } = useRequest(getEmail);
+    const { data, loading, run } = useRequest(getEmail, { debounceInterval: 400 });
+    const handleInput = () => {
+      run('test');
+    };
     return {
+      handleInput,
       data,
       loading,
     };

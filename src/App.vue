@@ -1,15 +1,18 @@
 <template>
   <Base />
+  <Debounce />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Base from './components/Base.vue';
+import Debounce from './components/Debounce.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     Base,
+    Debounce,
   },
 });
 </script>
