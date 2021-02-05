@@ -1,9 +1,10 @@
 {
   "name": "composition-request",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "andy00614",
-  "main": "dist/hook/index.js",
-  "module": "dist/hook/index.js",
+  "main": "dist/hook/use-request/index.js",
+  "module": "dist/hook/use-request/index.js",
+  "types": "dist/hook/use-request/index.d.ts",
   "private": false,
   "license": "MIT",
   "keywords": [
@@ -17,7 +18,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "build-ts": "rimraf ./dist && tsc"
+    "build-ts": "rimraf ./dist && tsc",
+    "prepublishOnly": "npm run build-ts"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
