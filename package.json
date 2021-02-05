@@ -1,10 +1,10 @@
 {
   "name": "composition-request",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "author": "andy00614",
-  "main": "dist/hook/use-request/index.js",
-  "module": "dist/hook/use-request/index.js",
-  "types": "dist/hook/use-request/index.d.ts",
+  "main": "dist/hook/index.js",
+  "module": "dist/hook/index.js",
+  "types": "dist/hook/index.d.ts",
   "private": false,
   "license": "MIT",
   "keywords": [
@@ -13,6 +13,10 @@
     "hook",
     "request"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andy00614/composition-request"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
