@@ -1,14 +1,14 @@
-import { ref } from 'vue';
-import { Options, PollingRequest } from './type';
-import { isOnCurPage } from './utils';
-import throttle from 'lodash.throttle';
-import debounce from 'lodash.debounce';
-import '../../dep';
+import { ref } from "vue";
+import { Options, PollingRequest } from "./type";
+import { isOnCurPage } from "./utils";
+import throttle from "lodash.throttle";
+import debounce from "lodash.debounce";
+import "../../dep";
 
 // ToDO: any -> generic
 export default function useRequest<T extends unknown[], R>(
   requestFn: (...params: T) => R,
-  options?: Options,
+  options?: Options
 ) {
   const requestData = ref<R>();
   const loading = ref(false);
@@ -42,7 +42,7 @@ export default function useRequest<T extends unknown[], R>(
     };
     return {
       run,
-      cancel,
+      cancel
     };
   }
   const requestInPolling = RequestInPolling(options?.pollingInterval || 1000);
@@ -75,6 +75,6 @@ export default function useRequest<T extends unknown[], R>(
     data: requestData,
     loading,
     run: runFactory(),
-    cancel: requestInPolling.cancel,
+    cancel: requestInPolling.cancel
   };
 }

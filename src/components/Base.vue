@@ -8,13 +8,13 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Mock from 'mockjs';
-import { useRequest } from '@/hook';
+import { defineComponent } from "vue";
+import Mock from "mockjs";
+import { useRequest } from "@/hook";
 function getUsername(): Promise<string> {
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve(Mock.mock('@name'));
+      resolve(Mock.mock("@name"));
     }, 1000);
   });
 }
@@ -24,8 +24,8 @@ export default defineComponent({
     const { data, loading, run } = useRequest(getUsername);
     return {
       data,
-      loading,
+      loading
     };
-  },
+  }
 });
 </script>

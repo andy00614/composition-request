@@ -2,6 +2,7 @@
   <div>
     <div>
       <h1>Hidden request</h1>
+      {{ data }}
     </div>
   </div>
 </template>
@@ -21,15 +22,11 @@ async function getEmail(search: string): Promise<string[]> {
 
 export default defineComponent({
   setup() {
-    const { data, loading, run } = useRequest(getEmail, {
+    const { data, loading } = useRequest(getEmail, {
       pollingWhenHidden: true,
-      pollingInterval: 2000
+      pollingInterval: 1000
     });
-    const handleInput = () => {
-      run("test");
-    };
     return {
-      handleInput,
       data,
       loading
     };

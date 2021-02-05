@@ -1,19 +1,22 @@
 <template>
   <Base />
   <Debounce />
+  <Hidden />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Base from './components/Base.vue';
-import Debounce from './components/Debounce.vue';
+import { defineComponent } from "vue";
+import Base from "./components/Base.vue";
+import Debounce from "./components/Debounce.vue";
+import Hidden from "./components/Hidden.vue";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
     Base,
     Debounce,
-  },
+    Hidden
+  }
 });
 </script>
 
