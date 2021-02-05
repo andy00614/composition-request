@@ -8,15 +8,15 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Mock from 'mockjs';
-import { useRequest } from '@/hook';
+import { defineComponent } from "vue";
+import Mock from "mockjs";
+import { useRequest } from "@/hook";
 
 async function getEmail(search: string): Promise<string[]> {
   console.log(search);
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve(Mock.mock({ 'data|5': ['@email'] }).data);
+      resolve(Mock.mock({ "data|5": ["@email"] }).data);
     }, 300);
   });
 }
@@ -24,16 +24,16 @@ async function getEmail(search: string): Promise<string[]> {
 export default defineComponent({
   setup() {
     const { data, loading, run } = useRequest(getEmail, {
-      debounceInterval: 400,
+      debounceInterval: 400
     });
     const handleInput = () => {
-      run('test');
+      run("test");
     };
     return {
       handleInput,
       data,
-      loading,
+      loading
     };
-  },
+  }
 });
 </script>
