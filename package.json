@@ -1,10 +1,10 @@
 {
   "name": "composition-request",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "author": "andy00614",
-  "main": "dist/hook/index.js",
-  "module": "dist/hook/index.js",
-  "types": "dist/hook/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "private": false,
   "license": "MIT",
   "keywords": [
@@ -27,13 +27,11 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
-    "lodash.throttle": "^4.1.1",
-    "mockjs": "^1.1.0"
-  },
-  "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1"
+    "lodash.throttle": "^4.1.1"
   },
   "devDependencies": {
+    "mockjs": "^1.1.0",
+    "@vue/composition-api": "^1.0.0-rc.5",
     "@types/jest": "^24.9.1",
     "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.throttle": "^4.1.6",

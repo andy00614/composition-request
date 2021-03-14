@@ -1,14 +1,13 @@
-import { ref } from "vue";
-import { Options, PollingRequest } from "./type";
-import { isOnCurPage } from "./utils";
-import throttle from "lodash.throttle";
-import debounce from "lodash.debounce";
-import "../../dep";
+import { ref } from '@vue/composition-api';
+import { Options } from './type';
+import { isOnCurPage } from './utils';
+import throttle from 'lodash.throttle';
+import debounce from 'lodash.debounce';
 
 export default function useRequest<T extends unknown[], U>(
   requestFn: (...params: T) => U,
-  options?: Options
-): Partial<PollingRequest> {
+  options?: Options,
+) {
   const requestData = ref<U>();
   const loading = ref(false);
   async function startRequest(...params: T) {
@@ -41,7 +40,7 @@ export default function useRequest<T extends unknown[], U>(
     };
     return {
       run,
-      cancel
+      cancel,
     };
   }
   const requestInPolling = RequestInPolling(options?.pollingInterval || 1000);
@@ -74,6 +73,6 @@ export default function useRequest<T extends unknown[], U>(
     data: requestData,
     loading,
     run: runFactory(),
-    cancel: requestInPolling.cancel
+    cancel: requestInPolling.cancel,
   };
 }
